@@ -1,8 +1,13 @@
-// My first Async I/O
+// FILTERED LS
 var fs = require('fs');
-var buffer = fs.readFile(process.argv[2], function(error,data){
-console.log(data
-	.toString()
-	.split('\n')
-	.length -1);
+var dir = process.argv[2];
+var ext = process.argv[3];
+var matchedList = [];
+fs.readdir(dir,function(err,list){
+	for(var i=0;i<list.length;i++){
+		if(list[i].split('.')[1] == ext)
+			matchedList.push(list[i]);
+	}
+	console.log(matchedList.join('\n'));
 });
+	
